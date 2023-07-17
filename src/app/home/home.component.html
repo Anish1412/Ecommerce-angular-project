@@ -1,0 +1,33 @@
+<div class="home">
+  <ngb-carousel *ngIf="popularProducts" >
+    <ng-template *ngFor="let p of popularProducts" ngbSlide>
+      <div class="picsum-img-wrapper">
+        <a href="/details/{{p.id}}">
+          <img [src]="p?.ImageUrl" alt="Random first slide" />
+        </a>
+      </div>
+      <div class="carousel-caption">
+        <h3 [ngStyle]="{color:p.Color === 'Black' ? 'white' : 'black'}">{{p?.Name}}</h3>
+        <h3 [ngStyle]="{color:p.Color === 'Black' ? 'white' : 'black'}">{{p?.Description}}</h3>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <p class="h1 mt-3 text-center text-decoration-underline">Trendy Products</p>
+  <div class="row " [style.marginBottom]="'100px'">
+    <div class="col-md-3 mt-3" *ngFor="let p of products">
+      <div class="card border border-3">
+        <a href="/details/{{p.id}}">
+          <img [src]="p.ImageUrl" class="card-img-top h-75" alt="Image not available">
+        </a>
+      <div class="card-body border border-1">
+        <h3 class="card-title text-center">{{p.Name}}</h3>
+        <p class="card-text text-center fw-semibold">Price : {{p.Price | currency:'INR'}}</p>
+        <p class="card-text text-center fw-semibold">Color : {{p.Color}}</p>
+      </div> 
+        <a href="/details/{{p.id}}" class="row px-5 text-decoration-none">
+          <button type="button" class="btn btn-danger mt-2 mb-2 text-white fs-5">View Details</button>
+        </a>
+    </div>   
+    </div>
+  </div>
+</div>

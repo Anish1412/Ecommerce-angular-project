@@ -1,0 +1,25 @@
+<div class="row justify-content-center" style="margin-bottom: 445px;">
+    <div class="col-md-10">
+        <h1 class="text-center mt-4 mb-4 text-decoration-underline">My Orders</h1>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th><h3>Orders</h3></th>
+                    <th><h3>Order Id</h3></th>
+                    <th><h3>Price</h3></th>
+                    <th><h3>Status</h3></th>
+                    <th><h3>Action</h3></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let o of orderDetails">
+                    <td><img src="https://pickystory.com/wp-content/uploads/2022/08/advantages-of-ecommerce-shopping-cart.png" alt="Image not available"></td>
+                    <td><h5 class="text-dark mt-3">#{{o.id}}</h5></td>
+                    <td><h5 class="text-dark mt-3">{{o.price | currency:'INR' }}</h5></td>
+                    <td><h5 class="text-dark mt-3">In Progress</h5></td>
+                    <td><button type="button" class="btn btn-danger mt-3" (click)="deleteOrder(o.id)">Cancel Order</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

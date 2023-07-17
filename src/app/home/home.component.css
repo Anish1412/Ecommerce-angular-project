@@ -1,0 +1,16 @@
+.picsum-img-wrapper img {
+    object-fit: contain;
+    width:900px;
+    height:550px;
+    margin-left: 250px;
+}
+.card img {
+    width: 100%;
+    height: 280px !important;
+}
+ngb-carousel {
+    /* background-color: black; */
+    background-image: url('https://t4.ftcdn.net/jpg/05/02/01/29/360_F_502012987_9hNiy2AAgNFOj9WbkkT138coWODQENjw.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}

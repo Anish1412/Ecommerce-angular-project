@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="row" style="margin: 48px 0px 146px 200px;">
+            <div class="col-md-4 mt-4">
+                <img [src]="productData?.ImageUrl" alt="Image not available">
+            </div>
+            <div class="col-md-8 pt-5">
+                <h1>{{productData?.Name}}</h1>
+                <h4>Price : <span class="fs-4">{{productData?.Price | currency:'INR'}}</span></h4>
+                <h4 class="mt-3">Color : &nbsp;<span [style.backgroundColor]="productData?.Color"  class="color"></span></h4>
+                <h4 class="mt-3">Category : <span class="fs-4">{{productData?.Category}}</span></h4>
+                <h4 class="mt-3">Description : <span class="fs-4">{{productData?.Description}}</span></h4>
+                <button class="btn btn-warning mt-1" *ngIf="!removeItem" (click)="addCart()">Add to Cart</button>
+                <button class="btn btn-danger mt-1" *ngIf="removeItem" (click)="removeCart(productData?.id)">Remove Item</button>
+                <button class="btn btn-success mx-2 mt-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button><br>
+                <button style="background-color: red;" *ngIf="!removeItem" class="button" (click)="deduct()">-</button>
+                <input type="text" name="" id="" *ngIf="!removeItem" [(ngModel)]="quantity" class="mt-3">
+                <button style="background-color: green;" *ngIf="!removeItem" class="button" (click)="Add()">+</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-3" id="exampleModalLabel">Alert</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <h5 class="text-dark">To Buy this product, you need to Login or Signup your User Account!!</h5>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

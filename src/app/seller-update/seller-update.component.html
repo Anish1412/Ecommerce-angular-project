@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <h1 class="text-center mt-2">Update Product</h1>
+    <!-- <p class="text-center text-success fs-4 fw-semibold">{{prodUpdate}}</p> -->
+    <div class="row justify-content-center" style="margin-bottom: 100px;">
+        <div class="col-md-4">
+            <form #UpdateProduct="ngForm" class="bg-dark p-4" (ngSubmit)="UpdateProd(UpdateProduct)">
+                <div class="form-group">
+                    <label for="pn" class="form-label mt-2"><h5>Product Name :</h5></label>
+<!-- Now, we will get the values from the stored object in a variable through "variableName.keyName"   -->
+<!-- "?" is compulsory while interpolating the value in "ngModel" attribute to ensure undefined value will not be shown-->
+                    <input type="text" name="Name" class="form-control" #PN="ngModel" ngModel="{{value?.Name}}" id="pn" placeholder="Enter Product Name..." required>
+                    <small class="text-danger" *ngIf="PN.invalid && PN.touched">Enter Product Name...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pp" class="form-label mt-2"><h5>Product Price :</h5></label>
+                    <input type="number" name="Price" class="form-control" #PP="ngModel" ngModel="{{value?.Price}}" id="pp" placeholder="Enter Product Price..." required>
+                    <small class="text-danger" *ngIf="PP.invalid && PP.touched">Enter Product Price...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pc" class="form-label mt-2"><h5>Product Color :</h5></label>
+                    <input type="text" name="Color" class="form-control" #PC="ngModel" ngModel="{{value?.Color}}" id="pc" placeholder="Enter Product Color..." required>
+                    <small class="text-danger" *ngIf="PC.invalid && PC.touched">Enter Product Color...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pcg" class="form-label mt-2"><h5>Product Category :</h5></label>
+                    <input type="text" name="Category" class="form-control" #PCG="ngModel" ngModel="{{value?.Category}}" id="pcg" placeholder="Enter Product Category..." required>
+                    <small class="text-danger" *ngIf="PCG.invalid && PCG.touched">Enter Product Category...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pd" class="form-label mt-2"><h5>Product Description :</h5></label>
+                    <textarea name="Description" class="form-control" #PD="ngModel" ngModel="{{value?.Description}}" id="pd" cols="10" rows="2" placeholder="Enter Product Description..." class="form-control" required></textarea>
+                    <small class="text-danger" *ngIf="PD.invalid && PD.touched">Enter Product Description...</small>
+                </div>
+                <div class="form-group">
+                    <label for="piu" class="form-label mt-2"><h5>Product Image URL :</h5></label>
+                    <input type="text" name="ImageUrl" class="form-control" #PIU="ngModel" ngModel="{{value?.ImageUrl}}" id="piu" placeholder="Enter Product image URL..." required>
+                    <small class="text-danger" *ngIf="PIU.invalid && PIU.touched">Enter Product image URL...</small>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 mt-3">
+                        <button type="submit" class="btn btn-success mx-2" [disabled]="UpdateProduct.invalid">Update Product</button>
+                        <button type="reset" class="btn btn-danger" (click)="resetData(UpdateProduct)">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<!-- ******** User registration ********** -->
+<div *ngIf="signup">
+<div class="row justify-content-center mt-5" style="margin-bottom: 107px;">
+    <h1 class="text-center">User Signup</h1>
+    <div class="col-md-4">
+            <form #UserSignup="ngForm" (ngSubmit)="Signup()" class="bg-dark card rounded-4 p-4 mt-2">
+                <div class="form-group">
+                    <label for="u" class="form-label text-white"><h5>Username</h5></label>
+                    <input type="text" class="form-control" name="username" (keyup)="getUserByPassword($event)" ngModel #username="ngModel" id="u" placeholder="Enter your username..." autocomplete="off" required />
+                    <small class="text-danger" *ngIf="username.invalid && username.touched">Enter your username...</small>
+                    <small class="text-danger" *ngIf="invalidPassword && username.touched">Username is already taken try another...</small>
+                </div>
+                <div class="form-group">
+                    <label for="e" class="form-label text-white mt-2"><h5>Email</h5></label>
+                    <input type="email" name="Email" email ngModel #Email="ngModel" id="e" class="form-control" placeholder="Enter valid email address..." autocomplete="off" required />
+                    <small class="text-danger" *ngIf="Email.invalid && Email.touched">Enter Valid Email address...</small>
+                </div>
+                <div class="form-group">
+                    <label for="p" class="form-label text-white mt-2"><h5>Password</h5></label>
+                    <input type="password" name="password" ngModel #password="ngModel" id="p" class="form-control" placeholder="Enter password..." required />
+                    <small class="text-danger" *ngIf="password.invalid && password.touched">Enter Password...</small>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 mt-3">
+                        <button type="submit" class="btn btn-success mx-2" [disabled]="UserSignup.invalid || btnDisabled">Sign-Up</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+                <p class="text-center text-white mt-2">Already have an account? <a [ngStyle]="{cursor:'pointer'}" class="text-decoration-underline" (click)="userLogin()">Login here.</a></p>
+            </form>
+    </div>
+</div>
+</div>
+
+<!-- *********** User Login ************ -->
+<div *ngIf="login">
+    <div class="row justify-content-center mt-5" style="margin-bottom: 168px;">
+        <h1 class="text-center">User Login</h1>
+        <h3 class="text-center text-danger">{{noUserFoundMessage}}</h3>
+        <div class="col-md-4">
+                <form #UserLogin="ngForm" (ngSubmit)="Login()" class="bg-dark card rounded-4 p-4 mt-2">
+                    <div class="form-group">
+                        <label for="e" class="form-label text-white mt-2"><h5>Email</h5></label>
+                        <input type="email" name="Email" email ngModel #Email="ngModel" id="e" class="form-control" placeholder="Enter valid email address..." required />
+                        <small class="text-danger" *ngIf="Email.invalid && Email.touched">Enter Valid Email address...</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="p" class="form-label text-white mt-2"><h5>Password</h5></label>
+                        <input type="password" name="password" ngModel #password="ngModel" id="p" class="form-control" placeholder="Enter password..." required />
+                        <small class="text-danger" *ngIf="password.invalid && password.touched">Enter Password...</small>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-5 mt-4">
+                            <button type="submit" class="btn btn-success mx-2" [disabled]="UserLogin.invalid">Login</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                    </div>
+                    <p class="text-center text-white mt-3">Don't have an account? <a [style.cursor]="'pointer'" class="text-decoration-underline" (click)="userSignup()">SignUp here.</a></p>
+                </form>
+        </div>
+    </div>
+    </div>

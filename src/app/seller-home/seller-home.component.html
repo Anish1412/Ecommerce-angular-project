@@ -1,0 +1,31 @@
+<div class="row justify-content-center" style="margin-bottom: 100px;">
+<div class="col-md-10">
+    <h1 class="text-center mt-3 mb-4 text-decoration-underline">All Product List</h1>
+<table class="table table-responsive border-dark table-white">
+    <thead>
+        <tr class="text-center fs-4">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Color</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider table-bordered">
+        <tr *ngFor="let p of prodList" class="text-center fw-bold">
+            <td>{{p.id}}</td>
+            <td>{{p.Name}}</td>
+            <td>{{p.Price | currency:'INR'}}</td>
+            <td>{{p.Color}}</td>
+            <td>{{p.Category}}</td>
+            <td>{{p.Description}}</td>
+            <td><img [src]="p.ImageUrl" alt="Image not available"></td>
+            <td><button class="btn btn-primary mx-2" [routerLink]="['/Update-Product',p.id]"><fa-icon [icon]="faEdit"></fa-icon></button> <button class="btn btn-danger" (click)="delete(p.id)"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

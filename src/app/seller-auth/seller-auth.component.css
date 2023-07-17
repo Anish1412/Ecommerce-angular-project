@@ -1,0 +1,16 @@
+form {
+    border-radius: 10px;
+}
+input.ng-invalid.ng-touched {
+    border: 3px solid red;
+    color:red;
+}
+input::placeholder {
+    color: black;
+}
+.row {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}

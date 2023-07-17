@@ -1,0 +1,59 @@
+<div *ngIf="isDisplaySignUp">
+<h1 class="text-center mt-5">Seller Sign-Up</h1>
+<div class="row justify-content-center" style="margin-bottom: 100px;">
+    <div class="col-md-4">
+        <form #SignUp="ngForm" class="bg-dark p-4" (ngSubmit)="sellSignUp(SignUp)">
+            <div class="form-group">
+                <label for="n" class="form-label text-white"><h5>Name :</h5></label>
+                <input type="text" name="Name" #SName="ngModel" ngModel id="n" class="form-control" placeholder="Enter Name..." autocomplete="off" required>
+                <small class="text-danger" *ngIf="SName.invalid && SName.touched">Enter your Name...</small>
+            </div>
+            <div class="form-group">
+                <label for="e" class="form-label text-white mt-3"><h5>Email :</h5></label>
+                <input type="email" name="Email" #SEmail="ngModel" ngModel email id="e" class="form-control" placeholder="Enter Email..." autocomplete="off" required>
+                <small class="text-danger" *ngIf="SEmail.invalid && SEmail.touched">Enter your email address...</small>
+            </div>
+            <div class="form-group">
+                <label for="p" class="form-label text-white mt-3"><h5>Password :</h5></label>
+                <input type="password" name="Password" #SPass="ngModel" ngModel id="p" class="form-control" placeholder="Enter Password..." required>
+                <small class="text-danger" *ngIf="SPass.invalid && SPass.touched">Enter Password...</small>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mt-3">
+                    <button type="submit" class="btn btn-success mx-2" [disabled]="SignUp.invalid">SignUp</button>
+                    <button type="reset" class="btn btn-danger" (click)="sellReset(SignUp)">Reset</button>
+                </div>
+            </div>
+            <p class="text-white text-center mx-1 mt-2">Already have an account?<a class="text-decoration-underline" [style.cursor]="'pointer'" (click)="onLogin()"> Login here.</a></p>
+        </form>
+    </div>
+</div>
+</div>
+
+<div *ngIf="isDisplayLogin">
+<h1 class="text-center mt-5">Seller Login</h1>
+<h3 class="text-danger text-center mt-4" *ngIf="Error">Email or Password is not valid</h3>
+<div class="row justify-content-center" style="margin-bottom: 178px;">
+    <div class="col-md-4">
+        <form #Login="ngForm" class="bg-dark p-4" (ngSubmit)="sellLogin(Login)">
+            <div class="form-group">
+                <label for="e" class="form-label text-white mt-3"><h5>Email :</h5></label>
+                <input type="email" name="Email" #SEmail="ngModel" ngModel email id="e" class="form-control" placeholder="Enter Email..." required>
+                <small class="text-danger" *ngIf="SEmail.invalid && SEmail.touched">Enter your email address...</small>
+            </div>
+            <div class="form-group">
+                <label for="p" class="form-label text-white mt-3"><h5>Password :</h5></label>
+                <input type="password" name="Password" #SPass="ngModel" ngModel id="p" class="form-control" placeholder="Enter Password..." required>
+                <small class="text-danger" *ngIf="SPass.invalid && SPass.touched">Enter Password...</small>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mt-3">
+                    <button type="submit" class="btn btn-success mx-2" [disabled]="Login.invalid">Login</button>
+                    <button type="reset" class="btn btn-danger" (click)="sellReset(Login)">Reset</button>
+                </div>
+            </div>
+            <p class="text-white text-center mx-1 mt-2">Don't have an account?<a class="text-decoration-underline" [style.cursor]="'pointer'" (click)="onSignUp()"> SignUp here.</a></p>
+        </form>
+    </div>
+</div>
+</div>

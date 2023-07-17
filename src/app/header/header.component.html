@@ -1,0 +1,107 @@
+<!-- TUTORIAL LOGIC -->
+<div *ngIf="navbar == 'default'">   
+<nav class="navbar navbar-expand-lg navbar-light bg-dark p-4">
+    <a [routerLink]="['']" class="navbar-brand fw-bold fs-4 mx-5">E-COMM</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input type="text" name="" (keyup)="trendySearches($event)" (blur)="hidesearch()" [style.marginLeft]="'35px'" [(ngModel)]="searchKeywords" size="84" id="find" class="p-2" placeholder="Search for Products...">
+    <button type="button" id="search" class="p-2" (click)="searchProduct()">Search</button>
+    <ul class="search" *ngIf="searches">
+        <li *ngFor="let s of searches">
+            <a (mousedown)="find(s.id,s.Name)">{{s.Name}}</a>
+        </li>
+    </ul>
+    <div class="justify-content-end collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a [routerLink]="['']" class="nav-link fs-5 mx-1 fw-semibold">Home</a></li>
+            <li class="nav-item"><a [routerLink]="['Seller']" class="nav-link fs-5 mx-1 fw-semibold">Seller</a></li>
+            <li class="nav-item"><a [routerLink]="['user-auth']" class="nav-link fs-5 mx-1 fw-semibold">Login/Signup</a></li>
+            <li class="nav-item"><a href="#" class="nav-link fs-5 mx-1 fw-semibold">Cart({{cartItems}})</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<div *ngIf="navbar == 'Seller'">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark p-4">
+    <a [routerLink]="['']" class="navbar-brand fw-bold fs-4 mx-5">E-COMM</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="justify-content-end collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a [routerLink]="['Add-Product']" class="nav-link fs-5 mx-2 fw-semibold">Add Product</a></li>
+            <li class="nav-item"><a [routerLink]="['Seller-home']" class="nav-link fs-5 mx-2 fw-semibold">Product List</a></li>
+            <li class="nav-item"><a (click)="sellerlogout()" [ngStyle]="{ cursor : 'pointer'}" class="nav-link fs-5 mx-2 fw-semibold">Logout</a></li>
+            <li class="nav-item"><a [routerLink]="['Seller-home']" class="nav-link fs-5 mx-2 fw-bold">{{sellerName}}</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<div *ngIf="navbar == 'User'">   
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark p-4">
+        <a [routerLink]="['']" class="navbar-brand fw-bold fs-4 mx-5">E-COMM</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input type="text" name="" (keyup)="trendySearches($event)" (blur)="hidesearch()" [(ngModel)]="searchKeywords" size="63" id="find" class="p-2" placeholder="Search for Products...">
+        <button type="button" id="search" class="p-2" (click)="searchProduct()">Search</button>
+        <ul class="search" *ngIf="searches">
+            <li *ngFor="let s of searches">
+                <a (mousedown)="find(s.id,s.Name)">{{s.Name}}</a>
+            </li>
+        </ul>
+        <div class="justify-content-end collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav mt-1">
+                <li class="nav-item"><a [routerLink]="['']" class="nav-link fs-5 mx-1 fw-semibold">Home</a></li>
+                <li class="nav-item"><a [routerLink]="['Seller']" class="nav-link fs-5 mx-1 fw-semibold">Seller</a></li>
+                <li class="nav-item"><a [routerLink]="['user-auth']" class="nav-link fs-5 mx-1 fw-semibold">{{userName}}</a></li>
+                <li class="nav-item"><a (click)="isOrdersDone()" [style.cursor]="'pointer'" class="nav-link fs-5 mx-1 fw-semibold">MyOrders</a></li>
+                <li class="nav-item"><a [style.cursor]="'pointer'" (click)="userLogout()" class="nav-link fs-5 mx-1 fw-semibold">Logout</a></li>
+                <!-- Below link has a logic to not to allow to navigate to that particular Url -->
+                <li class="nav-item"><a [routerLink]="cartItems>0?'cart-page':null" [style.cursor]="'pointer'" class="nav-link fs-5 mx-1 fw-semibold">Cart({{cartItems}})</a></li>
+            </ul>
+        </div>
+    </nav>
+    </div>
+
+
+
+<!-- MY LOGIC -->
+<!-- <div *ngIf="navbar == false">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark p-4">
+    <a [routerLink]="['']" class="navbar-brand fw-bold fs-4 mx-5">E-COMM</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input type="text" name="" size="84" id="" class="p-2" placeholder="Search for Products...">
+    <button type="button" id="search" class="p-2">Search</button>
+    <div class="justify-content-end collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a [routerLink]="['']" class="nav-link fs-5 mx-2 fw-semibold">Home</a></li>
+            <li class="nav-item"><a [routerLink]="['Seller']" class="nav-link fs-5 mx-2 fw-semibold">Seller</a></li>
+            <li class="nav-item"><a href="#" class="nav-link fs-5 mx-2 fw-semibold">Login</a></li>
+            <li class="nav-item"><a href="#" class="nav-link fs-5 mx-2 fw-semibold">Cart(0)</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<div *ngIf="navbar == true">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark p-4">
+    <a [routerLink]="['']" class="navbar-brand fw-bold fs-4 mx-5">E-COMM</a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="justify-content-end collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a [routerLink]="['Seller-home']" class="nav-link fs-5 mx-2 fw-semibold">Product List</a></li>
+            <li class="nav-item"><a [routerLink]="['Add-Product']" class="nav-link fs-5 mx-2 fw-semibold">Add Employee</a></li>
+            <li class="nav-item"><a (click)="logout()" [ngStyle]="{ cursor : 'pointer'}" class="nav-link fs-5 mx-2 fw-semibold">Logout</a></li>
+            <li class="nav-item"><a [routerLink]="['Seller-home']" class="nav-link fs-5 mx-2 fw-semibold">{{sellerName}}</a></li>
+        </ul>
+    </div>
+</nav>
+</div> -->

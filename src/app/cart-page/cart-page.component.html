@@ -1,0 +1,46 @@
+<h1 class="text-center mt-4 text-decoration-underline">Cart Page</h1>
+<div class="row p-4" style="margin-bottom: 181px;">
+    <div class="col-md-8">
+        <div class="card" *ngFor="let c of cartData">
+            <div class="row">
+                <div class="col-md-2">
+                    <img [src]="c.ImageUrl" alt="Image not available">
+                </div>
+                <div class="col-md-8 d-flex justify-content-around mt-4">
+                    <h5 class="text-dark">{{c.Name}}</h5>
+                    <h5 class="text-dark">Price : {{c.Price | currency:'INR'}}</h5>
+                    <h5 class="text-dark">Quantity : {{c.quantity}}</h5>
+                </div>
+                <div class="col-md-2 mt-4">
+                    <button type="button" class="btn btn-danger" (click)="removeItem(c?.id)">Remove item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h2 class="text-center">Summary</h2>
+        <div class="card p-4">
+            <div>
+                <h5 class="float-start text-dark">Amount :</h5>
+                <h5 class="float-end text-dark">{{priceSummary.amount}}</h5>
+            </div>
+            <div>
+                <h5 class="float-start text-dark">Tax :</h5>
+                <h5 class="float-end text-dark">{{priceSummary.tax}}</h5>
+            </div>
+            <div>
+                <h5 class="float-start text-dark">Delivery :</h5>
+                <h5 class="float-end text-dark">{{priceSummary.delivery}}</h5>
+            </div>
+            <div>
+                <h5 class="float-start text-dark">Discount :</h5>
+                <h5 class="float-end text-dark">{{priceSummary.discount}}</h5>
+            </div>
+            <div>
+                <h3 class="float-start text-dark mt-2">Total :</h3>
+                <h3 class="float-end text-dark mt-2">{{priceSummary.total}}</h3>
+            </div>
+            <button type="button" class="btn btn-info mt-3" (click)="checkout()"><h4 class="text-dark">Checkout</h4></button>
+        </div>
+    </div>
+</div>

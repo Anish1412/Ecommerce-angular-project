@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <h1 class="text-center mt-2">Add New Product</h1>
+    <p class="text-center text-success fs-4 fw-semibold">{{prodAdd}}</p>
+    <div class="row justify-content-center mb-2" >
+        <div class="col-md-4" style="margin-bottom: 100px;">
+            <form #AddProduct="ngForm" class="bg-dark p-4" (ngSubmit)="AddProd(AddProduct)">
+                <div class="form-group">
+                    <label for="pn" class="form-label"><h5>Product Name :</h5></label>
+                    <input type="text" name="Name" class="form-control" #PN="ngModel" ngModel id="pn" placeholder="Enter Product Name..." required>
+                    <small class="text-danger" *ngIf="PN.invalid && PN.touched">Enter Product Name...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pp" class="form-label mt-2"><h5>Product Price :</h5></label>
+                    <input type="number" name="Price" class="form-control" #PP="ngModel" ngModel id="pp" placeholder="Enter Product Price..." required>
+                    <small class="text-danger" *ngIf="PP.invalid && PP.touched">Enter Product Price...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pc" class="form-label mt-2"><h5>Product Color :</h5></label>
+                    <input type="text" name="Color" class="form-control" #PC="ngModel" ngModel id="pc" placeholder="Enter Product Color..." required>
+                    <small class="text-danger" *ngIf="PC.invalid && PC.touched">Enter Product Color...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pcg" class="form-label mt-2"><h5>Product Category :</h5></label>
+                    <input type="text" name="Category" class="form-control" #PCG="ngModel" ngModel id="pcg" placeholder="Enter Product Category..." required>
+                    <small class="text-danger" *ngIf="PCG.invalid && PCG.touched">Enter Product Category...</small>
+                </div>
+                <div class="form-group">
+                    <label for="pd" class="form-label mt-2"><h5>Product Description :</h5></label>
+                    <textarea name="Description" class="form-control" #PD="ngModel" ngModel id="pd" cols="10" rows="2" placeholder="Enter Product Description..." class="form-control" required></textarea>
+                    <small class="text-danger" *ngIf="PD.invalid && PD.touched">Enter Product Description...</small>
+                </div>
+                <div class="form-group">
+                    <label for="piu" class="form-label mt-2"><h5>Product Image URL :</h5></label>
+                    <input type="text" name="ImageUrl" class="form-control" #PIU="ngModel" ngModel id="piu" placeholder="Enter Product image URL..." required>
+                    <small class="text-danger" *ngIf="PIU.invalid && PIU.touched">Enter Product image URL...</small>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-7 mt-3">
+                        <button type="submit" class="btn btn-success mx-2" [disabled]="AddProduct.invalid">Add Product</button>
+                        <button type="reset" class="btn btn-danger" (click)="resetProd(AddProduct)">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    <div class="row justify-content-center">
+    <div class="col-md-4">
+        <form #SignUp="ngForm" class="bg-dark p-4" (ngSubmit)="sellSignUp(SignUp)">
+            <div class="form-group">
+                <label for="n" class="form-label text-white"><h5>Name :</h5></label>
+                <input type="text" name="Name" #SName="ngModel" ngModel id="n" class="form-control" placeholder="Enter Name..." required>
+                <small class="text-danger" *ngIf="SName.invalid && SName.touched">Enter your Name...</small>
+            </div>
+            <div class="form-group">
+                <label for="e" class="form-label text-white mt-3"><h5>Email :</h5></label>
+                <input type="email" name="Email" #SEmail="ngModel" ngModel email id="e" class="form-control" placeholder="Enter Email..." required>
+                <small class="text-danger" *ngIf="SEmail.invalid && SEmail.touched">Enter your email address...</small>
+            </div>
+            <div class="form-group">
+                <label for="p" class="form-label text-white mt-3"><h5>Password :</h5></label>
+                <input type="password" name="Password" #SPass="ngModel" ngModel id="p" class="form-control" placeholder="Enter Password..." required>
+                <small class="text-danger" *ngIf="SPass.invalid && SPass.touched">Enter Password...</small>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mt-3">
+                    <button type="submit" class="btn btn-success mx-2" [disabled]="SignUp.invalid">SignUp</button>
+                    <button type="reset" class="btn btn-danger" (click)="sellReset(SignUp)">Reset</button>
+                </div>
+            </div>
+            <p class="text-white text-center mx-1 mt-2">Already have an account?<a class="text-decoration-underline" [style.cursor]="'pointer'" (click)="onLogin()"> Login here.</a></p>
+        </form>
+    </div>
+</div>
+ -->

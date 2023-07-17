@@ -1,0 +1,38 @@
+<h1 class="text-center text-decoration-underline mt-2 mb-4">Checkout</h1>
+<div class="row p-3" >
+    <div class="col-md-7">
+<h2 class="text-center">Add Shipping address</h2>
+<h5 class="text-success text-center mt-3 mb-3">{{orderMsg}}</h5>
+<div class="row justify-content-center" style="margin-bottom: 100px;">
+    <div class="col-md-6">
+        <form #Order="ngForm" class="bg-dark p-4 rounded-4" (ngSubmit)="OrderNow()">
+            <div class="form-group">
+                <label for="n" class="form-label text-white"><h5>Email :</h5></label>
+                <input type="email" name="email" #Email="ngModel" ngModel="{{userEmail}}" email id="n" class="form-control" placeholder="Enter User Email..." readonly required>
+                <small class="text-danger" *ngIf="Email.invalid && Email.touched">Enter valid email address...</small>
+            </div>
+            <div class="form-group">
+                <label for="e" class="form-label text-white mt-3"><h5>Address :</h5></label>
+                <input type="email" name="address" #Address="ngModel" ngModel id="e" class="form-control" placeholder="Enter User Address..." required>
+                <small class="text-danger" *ngIf="Address.invalid && Address.touched">Enter user address...</small>
+            </div>
+            <div class="form-group">
+                <label for="p" class="form-label text-white mt-3"><h5>Contact :</h5></label>
+                <input type="password" name="contact" #Contact="ngModel" ngModel id="p" class="form-control" placeholder="Enter Contact details..." required>
+                <small class="text-danger" *ngIf="Contact.invalid && Contact.touched">Enter Contact details...</small>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-7 mt-3">
+                    <button type="submit" class="btn btn-success mx-2" [disabled]="Order.invalid">Order Now</button>
+                    <button type="reset" class="btn btn-danger" >Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    </div>
+    <div class="col-md-5">
+        <h1 class="text-dark mx-2 mt-5">Total Amount : {{totalAmount | currency:'INR' }}</h1>
+        <h2 class="text-dark">Payment Method : Pay on delivery</h2>
+    </div>
+</div>
